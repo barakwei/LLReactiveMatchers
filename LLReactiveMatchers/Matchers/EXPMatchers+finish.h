@@ -1,4 +1,3 @@
-#import "Expecta.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <Expecta/Expecta.h>
 
 EXPMatcherInterface(finish, (void))

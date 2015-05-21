@@ -8,7 +8,7 @@
 
 #import "EXPExpect+LLReactiveMatchersExtensions.h"
 
-#import "Expecta.h"
+#import <Expecta/Expecta.h>
 
 #import <libkern/OSAtomic.h>
 #import <objc/objc-runtime.h>

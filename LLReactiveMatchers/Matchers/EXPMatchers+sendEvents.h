@@ -1,5 +1,3 @@
-#import "Expecta.h"
-
-#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <Expecta/Expecta.h>
 
 EXPMatcherInterface(sendEvents, (id expected))

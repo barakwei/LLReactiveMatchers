@@ -6,7 +6,7 @@
 //
 //
 
-#import "EXPExpect.h"
+#import <Expecta/EXPExpect.h>
 
 @interface EXPExpect (LLReactiveMatchersExtensions)
 

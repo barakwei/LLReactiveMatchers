@@ -1,5 +1,4 @@
-#import "Expecta.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <Expecta/Expecta.h>
 
 EXPMatcherInterface(matchValue, (NSUInteger valueIndex, BOOL(^matchBlock)(id value)) )
 

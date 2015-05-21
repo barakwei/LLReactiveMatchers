@@ -8,7 +8,8 @@
 
 #import "LLSignalTestRecorder.h"
 
-#import "Expecta.h"
+#import <Expecta/Expecta.h>
+
 #import "RACSignal+LLSubscriptionCounting.h"
 #import "LLReactiveMatchersHelpers.h"
 

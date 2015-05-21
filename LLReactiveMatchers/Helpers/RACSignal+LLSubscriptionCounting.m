@@ -8,9 +8,7 @@
 
 #import "RACSignal+LLSubscriptionCounting.h"
 
-#import <ReactiveCocoa/RACEXTScope.h>
-#import "RACSubscriber.h"
-#import "RACDisposable.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import <objc/runtime.h>
 

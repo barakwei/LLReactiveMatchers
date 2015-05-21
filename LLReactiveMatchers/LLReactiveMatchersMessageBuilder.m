@@ -8,7 +8,7 @@
 
 #import "LLReactiveMatchersMessageBuilder.h"
 
-#import "Expecta.h"
+#import <Expecta/Expecta.h>
 
 typedef NS_OPTIONS(NSUInteger, LLReactiveMatchersMessageBuilderRendering) {
     RenderActualValues = 1 << 1,
