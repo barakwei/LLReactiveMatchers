@@ -88,7 +88,6 @@ static void *continousAsyncKey = &continousAsyncKey;
     
         while(1) {
             matchResult = [matcher matches:*actual];
-            failed = self.negative ? matchResult : !matchResult;
             if([[NSDate date] compare:expiryDate] == NSOrderedDescending) {
                 break;
             }
