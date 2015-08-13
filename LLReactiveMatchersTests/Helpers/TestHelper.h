@@ -1,5 +1,4 @@
 #import <Foundation/Foundation.h>
-#import <SenTestingKit/SenTestingKit.h>
 
 #define EXP_SHORTHAND
 

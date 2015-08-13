@@ -1,5 +1,13 @@
 platform :ios, '6.0'
 
-pod 'ReactiveCocoa'
-pod 'Specta'
-pod 'Expecta'
+target :LLReactiveMatchers do
+  pod 'ReactiveCocoa'
+  pod 'Specta'
+  pod 'Expecta'
+end
+
+target :LLReactiveMatchersTests do
+  pod 'ReactiveCocoa'
+  pod 'Specta'
+  pod 'Expecta'
+end
