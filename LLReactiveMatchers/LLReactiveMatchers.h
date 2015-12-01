@@ -13,3 +13,4 @@
 #import "EXPMatchers+sendEvents.h"
 #import "EXPMatchers+sendValues.h"
 #import "EXPMatchers+sendValuesWithCount.h"
+#import "EXPMatchers+deliverValuesOnThread.h"

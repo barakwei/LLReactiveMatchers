@@ -46,7 +46,7 @@
 - (void) test_endsInSameError {
     RACSignal *signal = [[[LLReactiveMatchersFixtures values:@[@1, @2, @3]] concat:[RACSignal error:LLSpecError]] setNameWithFormat:@"foo"];
     NSError *error = LLSpecError;
-    NSString *failureString = @"expected: actual foo to send error Error Domain=com.github.lawrencelomax.llreactivematchers.fixture Code=0 \"The operation couldn’t be completed. (com.github.lawrencelomax.llreactivematchers.fixture error 0.)\", got: the same error";
+    NSString *failureString = [NSString stringWithFormat:@"expected: actual foo to send error %@, got: the same error" , error];
     
     assertPass(test_expect(signal).to.sendError(error));
     assertFail(test_expect(signal).toNot.sendError(error), failureString);
@@ -59,8 +59,8 @@
 - (void) test_endsInDifferentError {
     RACSignal *signal = [[[LLReactiveMatchersFixtures values:@[@1, @2, @3]] concat:[RACSignal error:LLSpecError]] setNameWithFormat:@"foo"];
     NSError *error = [NSError errorWithDomain:@"foo" code:1 userInfo:@{}];
-    NSString *failureString = @"expected: actual foo to send error Error Domain=foo Code=1 \"The operation couldn’t be completed. (foo error 1.)\", got: different errors";
-    
+    NSString *failureString = [NSString stringWithFormat:@"expected: actual foo to send error %@, got: different errors" , error];
+
     assertPass(test_expect(signal).toNot.sendError(error));
     assertFail(test_expect(signal).to.sendError(error), failureString);
     

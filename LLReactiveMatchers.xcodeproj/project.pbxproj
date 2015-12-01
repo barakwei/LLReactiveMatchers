@@ -46,7 +46,9 @@
 		21FD0A621850470000DB455B /* libLLReactiveMatchers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FD0A4A1850470000DB455B /* libLLReactiveMatchers.a */; };
 		21FD0A681850470000DB455B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 21FD0A661850470000DB455B /* InfoPlist.strings */; };
 		26F973D0F32499A60A5A6B39 /* libPods-LLReactiveMatchersTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D17E90518258F3EB1A7474 /* libPods-LLReactiveMatchersTests.a */; };
-		D77CF4357E7645CA9CD16B5E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36235DB5AB1140659840DAD1 /* libPods.a */; };
+		84FBFD5B1C0DDEB600DD2C25 /* EXPMatchers+deliverValuesOnThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FBFD5A1C0DDEB600DD2C25 /* EXPMatchers+deliverValuesOnThread.m */; };
+		84FBFD5C1C0DDEB600DD2C25 /* EXPMatchers+deliverValuesOnThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FBFD5A1C0DDEB600DD2C25 /* EXPMatchers+deliverValuesOnThread.m */; };
+		84FBFD5E1C0DE1E800DD2C25 /* EXPMatchers+deliverValuesOnThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FBFD5D1C0DE1E800DD2C25 /* EXPMatchers+deliverValuesOnThread.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +143,9 @@
 		2982D40F5425FCA4D51ACCFB /* Pods-LLReactiveMatchersTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LLReactiveMatchersTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LLReactiveMatchersTests/Pods-LLReactiveMatchersTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2DE26B2E2A714F969099A41B /* libPods-LLReactiveMatchers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LLReactiveMatchers.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36235DB5AB1140659840DAD1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		84FBFD591C0DDEB600DD2C25 /* EXPMatchers+deliverValuesOnThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatchers+deliverValuesOnThread.h"; sourceTree = "<group>"; };
+		84FBFD5A1C0DDEB600DD2C25 /* EXPMatchers+deliverValuesOnThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EXPMatchers+deliverValuesOnThread.m"; sourceTree = "<group>"; };
+		84FBFD5D1C0DE1E800DD2C25 /* EXPMatchers+deliverValuesOnThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EXPMatchers+deliverValuesOnThread.m"; sourceTree = "<group>"; };
 		90AA0DB9F2FD0DA67E5FA271 /* Pods-LLReactiveMatchers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LLReactiveMatchers.release.xcconfig"; path = "Pods/Target Support Files/Pods-LLReactiveMatchers/Pods-LLReactiveMatchers.release.xcconfig"; sourceTree = "<group>"; };
 		AD62BCB9F500F7A6EE34B297 /* Pods-LLReactiveMatchers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LLReactiveMatchers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LLReactiveMatchers/Pods-LLReactiveMatchers.debug.xcconfig"; sourceTree = "<group>"; };
 		F4D17E90518258F3EB1A7474 /* libPods-LLReactiveMatchersTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LLReactiveMatchersTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,7 +157,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				21FD0A4E1850470000DB455B /* Foundation.framework in Frameworks */,
-				D77CF4357E7645CA9CD16B5E /* libPods.a in Frameworks */,
 				1AAB56FE27F154CBB77B62DA /* libPods-LLReactiveMatchers.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -177,6 +181,8 @@
 			children = (
 				21A68F3B187F9F280092B682 /* EXPMatchers+beSubscribedTo.h */,
 				21A68F3C187F9F280092B682 /* EXPMatchers+beSubscribedTo.m */,
+				84FBFD591C0DDEB600DD2C25 /* EXPMatchers+deliverValuesOnThread.h */,
+				84FBFD5A1C0DDEB600DD2C25 /* EXPMatchers+deliverValuesOnThread.m */,
 				21A1FCE918596B8E0097995D /* EXPMatchers+complete.h */,
 				21A1FCEA18596B8E0097995D /* EXPMatchers+complete.m */,
 				21F569C81863BE37009C47B4 /* EXPMatchers+error.h */,
@@ -215,6 +221,7 @@
 				212E34951856BC6D00D04066 /* EXPMatchers+sendEvents.m */,
 				21A1FCF81859903A0097995D /* EXPMatchers+sendValuesTests.m */,
 				21BEA101185D2D0300D8030C /* EXPMatchers+sendValuesWithCountTests.m */,
+				84FBFD5D1C0DE1E800DD2C25 /* EXPMatchers+deliverValuesOnThread.m */,
 				218E71781851420400D42D57 /* LLSignalTestRecorderTests.m */,
 			);
 			path = Tests;
@@ -497,6 +504,7 @@
 				21A68F3A187F9E780092B682 /* RACSignal+LLSubscriptionCounting.m in Sources */,
 				21BEA100185D2A9600D8030C /* EXPMatchers+sendValuesWithCount.m in Sources */,
 				216348CF18612DFB00A457F1 /* EXPMatchers+matchValues.m in Sources */,
+				84FBFD5B1C0DDEB600DD2C25 /* EXPMatchers+deliverValuesOnThread.m in Sources */,
 				21A1FCF218598AA60097995D /* EXPMatchers+finish.m in Sources */,
 				21A68F38187F9E780092B682 /* EXPExpect+LLReactiveMatchersExtensions.m in Sources */,
 				212E349F1856DE7000D04066 /* LLReactiveMatchersHelpers.m in Sources */,
@@ -521,9 +529,11 @@
 				21A8A3231878E09B00A1461F /* EXPExpect+LLReactiveMatchersExtensionsTests.m in Sources */,
 				21A1FCF91859903A0097995D /* EXPMatchers+sendValuesTests.m in Sources */,
 				21F569CC1863BE7B009C47B4 /* EXPMatchers+errorTests.m in Sources */,
+				84FBFD5C1C0DDEB600DD2C25 /* EXPMatchers+deliverValuesOnThread.m in Sources */,
 				21DD76CD1851792C00488C18 /* EXPExpect+Test.m in Sources */,
 				21A1FCED18596DB30097995D /* EXPMatchers+completeTests.m in Sources */,
 				21F7B02A18A0B685005D4A56 /* EXPMatchers+matchErrorTests.m in Sources */,
+				84FBFD5E1C0DE1E800DD2C25 /* EXPMatchers+deliverValuesOnThread.m in Sources */,
 				212E34961856BC6D00D04066 /* EXPMatchers+sendEvents.m in Sources */,
 				218E71791851420400D42D57 /* LLSignalTestRecorderTests.m in Sources */,
 				212E34AF1857C93100D04066 /* EXPMatchers+sendErrorTest.m in Sources */,
