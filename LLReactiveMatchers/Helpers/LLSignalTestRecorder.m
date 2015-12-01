@@ -44,7 +44,7 @@
 
 + (instancetype) recordWithSignal:(RACSignal *)signal {
     NSAssert(signal != nil, @"Signal should not be nil");
-    
+
     LLSignalTestRecorder *recorder = [[LLSignalTestRecorder alloc] init];
     [recorder subscribeToSignal:signal];
     return recorder;
@@ -59,16 +59,17 @@
 + (instancetype) recorderThatSendsValues:(id)values thenErrors:(NSError *)error {
     LLSignalTestRecorder *recorder = [LLSignalTestRecorder recroderThatSendsValues:values];
     recorder.receivedError = error;
+    recorder.receivedErrorEvent = YES;
     return recorder;
 }
 
 + (instancetype) recroderThatSendsValues:(id)values {
-  NSAssert(values != nil, @"Values should not be nil");
+    NSAssert(values != nil, @"Values should not be nil");
 
-  LLSignalTestRecorder *recorder = [[LLSignalTestRecorder alloc] init];
-  recorder.receivedEvents = [values mutableCopy];
-  recorder.activeThreadsInReceivedEvents = [NSMutableSet setWithArray:@[[NSThread currentThread]]];
-  return recorder;
+    LLSignalTestRecorder *recorder = [[LLSignalTestRecorder alloc] init];
+    recorder.receivedEvents = [values mutableCopy];
+    recorder.activeThreadsInReceivedEvents = [NSMutableSet setWithArray:@[[NSThread currentThread]]];
+    return recorder;
 }
 
 - (void) dealloc {
@@ -78,33 +79,33 @@
 - (void) subscribeToSignal:(RACSignal *)signal {
     [self setNameWithFormat:@"TestRecorder [%@]", signal.name];
     [signal startCountingSubscriptions];
-    
+
     self.originalSignal = signal;
-    
+
     RACSignal *locallyRecordingSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         return [signal subscribeNext:^(id x) {
             @synchronized(self) {
                 [self.receivedEvents addObject:LLRMArrayValueForSignalValue(x)];
                 [self.activeThreadsInReceivedEvents addObject:[NSThread currentThread]];
             }
-            
+
             [subscriber sendNext:x];
         } error:^(NSError *error) {
             @synchronized(self) {
                 self.receivedErrorEvent = YES;
                 self.receivedError = error;
             }
-            
+
             [subscriber sendError:error];
         } completed:^{
             @synchronized(self) {
                 self.receivedCompletedEvent = YES;
             }
-            
+
             [subscriber sendCompleted];
         }];
     }];
-    
+
     self.disposable = [locallyRecordingSignal subscribe:self.passthrough];
 }
 
@@ -169,13 +170,13 @@
 }
 
 - (NSSet *)operatingThreads {
-  @synchronized(self) {
-    return [self.activeThreadsInReceivedEvents copy];
-  }
+    @synchronized(self) {
+        return [self.activeThreadsInReceivedEvents copy];
+    }
 }
 
 - (NSUInteger) operatingThreadsCount {
-  return self.operatingThreads.count;
+    return self.operatingThreads.count;
 }
 
 #pragma mark Descriptions

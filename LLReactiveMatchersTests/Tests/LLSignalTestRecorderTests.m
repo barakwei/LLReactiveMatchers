@@ -170,4 +170,20 @@
     expect(values).to.equal( (@[@0, @1, @2, @3, @4]) );
 }
 
+- (void) test_recorderAccumulatesThreads {
+  RACSubject *subject = [RACSubject subject];
+  RACSignal *multiThreadedSignal = [[subject
+                                   deliverOn:[RACScheduler scheduler]]
+                                   merge:subject];
+  LLSignalTestRecorder *recorder = [LLSignalTestRecorder recordWithSignal:multiThreadedSignal];
+
+  [subject sendNext:@0];
+  [subject sendNext:@1];
+  [subject sendNext:@2];
+  [subject sendCompleted];
+
+  expect(recorder.operatingThreadsCount).will.equal(2);
+  expect(recorder.operatingThreads).will.contain([NSThread mainThread]);
+}
+
 @end
