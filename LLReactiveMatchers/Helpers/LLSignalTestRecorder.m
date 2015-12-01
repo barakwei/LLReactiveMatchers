@@ -26,6 +26,8 @@
 @property (nonatomic, strong) NSMutableArray *receivedEvents;
 @property (nonatomic, strong) NSError *receivedError;
 
+@property (nonatomic, strong) NSMutableSet *activeThreadsInReceivedEvents;
+
 @end
 
 @implementation LLSignalTestRecorder
@@ -33,6 +35,7 @@
 - (id) init {
     if( (self = [super init]) ) {
         self.receivedEvents = [NSMutableArray array];
+        self.activeThreadsInReceivedEvents = [NSMutableSet set];
         self.passthrough = [RACReplaySubject replaySubjectWithCapacity:RACReplaySubjectUnlimitedCapacity];
         [self startCountingSubscriptions];
     }
@@ -48,22 +51,24 @@
 }
 
 + (instancetype) recorderThatSendsValuesThenCompletes:(id)values {
-    NSAssert(values != nil, @"Values should not be nil");
-    
-    LLSignalTestRecorder *recorder = [[LLSignalTestRecorder alloc] init];
-    recorder.receivedEvents = [values mutableCopy];
+    LLSignalTestRecorder *recorder = [LLSignalTestRecorder recroderThatSendsValues:values];
     recorder.receivedCompletedEvent = YES;
     return recorder;
 }
 
 + (instancetype) recorderThatSendsValues:(id)values thenErrors:(NSError *)error {
-    NSAssert(values != nil, @"Values should not be nil");
-    
-    LLSignalTestRecorder *recorder = [[LLSignalTestRecorder alloc] init];
-    recorder.receivedEvents = [values mutableCopy];
-    recorder.receivedErrorEvent = YES;
+    LLSignalTestRecorder *recorder = [LLSignalTestRecorder recroderThatSendsValues:values];
     recorder.receivedError = error;
     return recorder;
+}
+
++ (instancetype) recroderThatSendsValues:(id)values {
+  NSAssert(values != nil, @"Values should not be nil");
+
+  LLSignalTestRecorder *recorder = [[LLSignalTestRecorder alloc] init];
+  recorder.receivedEvents = [values mutableCopy];
+  recorder.activeThreadsInReceivedEvents = [NSMutableSet setWithArray:@[[NSThread currentThread]]];
+  return recorder;
 }
 
 - (void) dealloc {
@@ -80,6 +85,7 @@
         return [signal subscribeNext:^(id x) {
             @synchronized(self) {
                 [self.receivedEvents addObject:LLRMArrayValueForSignalValue(x)];
+                [self.activeThreadsInReceivedEvents addObject:[NSThread currentThread]];
             }
             
             [subscriber sendNext:x];
@@ -160,6 +166,16 @@
     @synchronized(self) {
         return self.receivedCompletedEvent || self.receivedErrorEvent;
     }
+}
+
+- (NSSet *)operatingThreads {
+  @synchronized(self) {
+    return [self.activeThreadsInReceivedEvents copy];
+  }
+}
+
+- (NSUInteger) operatingThreadsCount {
+  return self.operatingThreads.count;
 }
 
 #pragma mark Descriptions
