@@ -46,7 +46,6 @@
 		21FD0A621850470000DB455B /* libLLReactiveMatchers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FD0A4A1850470000DB455B /* libLLReactiveMatchers.a */; };
 		21FD0A681850470000DB455B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 21FD0A661850470000DB455B /* InfoPlist.strings */; };
 		26F973D0F32499A60A5A6B39 /* libPods-LLReactiveMatchersTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D17E90518258F3EB1A7474 /* libPods-LLReactiveMatchersTests.a */; };
-		D77CF4357E7645CA9CD16B5E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36235DB5AB1140659840DAD1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,7 +151,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				21FD0A4E1850470000DB455B /* Foundation.framework in Frameworks */,
-				D77CF4357E7645CA9CD16B5E /* libPods.a in Frameworks */,
 				1AAB56FE27F154CBB77B62DA /* libPods-LLReactiveMatchers.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
