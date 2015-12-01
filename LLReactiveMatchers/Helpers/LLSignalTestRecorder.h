@@ -52,6 +52,9 @@
 @property (nonatomic, readonly) NSString *valuesDescription;
 @property (nonatomic, readonly) NSString *errorDescription;
 
+@property (nonatomic, readonly) NSSet *operatingThreads;
+@property (nonatomic, readonly) NSUInteger operatingThreadsCount;
+
 @end
 
 // Convenience for creating a test recorder for chainging purposes
