@@ -169,7 +169,7 @@
     }
 }
 
-- (NSSet *)operatingThreads {
+- (NSSet *) operatingThreads {
     @synchronized(self) {
         return [self.activeThreadsInReceivedEvents copy];
     }
