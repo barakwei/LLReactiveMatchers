@@ -136,11 +136,12 @@ typedef NS_OPTIONS(NSUInteger, LLReactiveMatchersMessageBuilderRendering) {
 }
 
 + (NSString *) actualNotCorrectClass:(id)actual {
-    return [NSString stringWithFormat:@"expected: actual to be a signal or recorder"];
+    return [NSString stringWithFormat:@"expected: actual to be a signal or recorder: %@", actual];
 }
 
 + (NSString *) expectedNotCorrectClass:(id)expected {
-    return [NSString stringWithFormat:@"expected: expected to be a signal or recorder"];
+    return [NSString stringWithFormat:@"expected: expected to be a signal or recorder: %@",
+            expected];
 }
 
 + (NSString *) actualNotFinished:(LLSignalTestRecorder *)actual {
