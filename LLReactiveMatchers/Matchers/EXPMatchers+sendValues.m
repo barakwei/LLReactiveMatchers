@@ -20,7 +20,7 @@ void (^subscribe)(void) = ^{
 };
 
 prerequisite(^BOOL{
-    return LLRMCorrectClassesForActual(actual);
+    return LLRMCorrectClassesForActual(actual) && LLRMCorrectClassesForExpected(expected, NSArray.class);
 });
 
 match(^BOOL{
@@ -32,7 +32,10 @@ failureMessageForTo(^NSString *{
     if(!LLRMCorrectClassesForActual(actual)) {
         return [LLReactiveMatchersMessageBuilder actualNotCorrectClass:actual];
     }
-    
+    if(!LLRMCorrectClassesForExpected(expected, NSArray.class)) {
+      return [LLReactiveMatchersMessageBuilder expectedShouldBeOfClass:NSArray.class];
+    }
+
     return [[[[[[LLReactiveMatchersMessageBuilder message] actual:actualRecorder] renderActualValues] expected:expectedRecorder] renderExpectedValues] build];
 });
 

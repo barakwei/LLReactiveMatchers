@@ -24,6 +24,10 @@ extern BOOL LLRMCorrectClassesForActual(id object) {
     return [object isKindOfClass:RACSignal.class] || [object isKindOfClass:LLSignalTestRecorder.class];
 }
 
+extern BOOL LLRMCorrectClassesForExpected(id object, Class expectedClass) {
+  return [object isKindOfClass:expectedClass];
+}
+
 extern LLSignalTestRecorder *LLRMRecorderForObject(id object) {
     if([object isKindOfClass:LLSignalTestRecorder.class]) {
         return object;

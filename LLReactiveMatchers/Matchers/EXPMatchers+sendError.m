@@ -19,7 +19,7 @@ void (^subscribe)() = ^{
 };
 
 prerequisite(^BOOL{
-    return LLRMCorrectClassesForActual(actual);
+    return LLRMCorrectClassesForActual(actual) && LLRMCorrectClassesForExpected(expected, NSError.class);
 });
 
 match(^BOOL{
@@ -30,6 +30,9 @@ match(^BOOL{
 failureMessageForTo(^NSString *{
     if(!LLRMCorrectClassesForActual(actual)) {
         return [LLReactiveMatchersMessageBuilder actualNotCorrectClass:actual];
+    }
+    if(!LLRMCorrectClassesForExpected(expected, NSError.class)) {
+      return [LLReactiveMatchersMessageBuilder expectedShouldBeOfClass:NSError.class];
     }
     if(!(actualRecorder.hasCompleted || actualRecorder.hasErrored)) {
         return [LLReactiveMatchersMessageBuilder actualNotFinished:actualRecorder];

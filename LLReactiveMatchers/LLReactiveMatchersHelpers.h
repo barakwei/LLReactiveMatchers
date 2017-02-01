@@ -7,6 +7,7 @@ extern BOOL __attribute__((overloadable)) LLRMIdenticalValues(NSArray *left, NSA
 extern BOOL __attribute__((overloadable)) LLRMIdenticalValues(LLSignalTestRecorder *left, LLSignalTestRecorder *right);
 
 extern BOOL LLRMCorrectClassesForActual(id object);
+extern BOOL LLRMCorrectClassesForExpected(id object, Class expectedClass);
 extern LLSignalTestRecorder *LLRMRecorderForObject(id object);
 
 extern BOOL LLRMContainsAllValuesEqual(LLSignalTestRecorder *left, LLSignalTestRecorder *right);
